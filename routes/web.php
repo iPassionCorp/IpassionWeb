@@ -19,4 +19,5 @@ Route::get('/careers', 'PagesController@careers');
 Route::get('/contact-us', 'PagesController@contact');
 
 // Administrator
-Route::get('/adminstrator', 'AdminController@login');
+Route::get('/administrator', 'AdminController@login');
+Route::get('/forgot-password', 'AdminController@forgot');
