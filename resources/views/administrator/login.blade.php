@@ -17,7 +17,13 @@
         <!-- Custom styles for this template-->
         <link href="{{ asset('/admin/css/sb-admin.css') }}" rel="stylesheet">
     </head>
-    <body>        
+    <body>
         
+        
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ asset('/admin/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="{{ asset('/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     </body>
 </html>
