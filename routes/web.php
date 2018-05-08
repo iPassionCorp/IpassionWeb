@@ -21,6 +21,7 @@ Route::get('/contact-us', 'PagesController@contact');
 Auth::routes();
 
 // Administrator
-Route::get('/administrator', 'Autp\LoginController@loginAdmin');
-// Route::get('/forgot-password', 'PagesController@forgot');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/administrator', 'Auth\LoginController@loginAdmin');
 Route::get('/administrator/dashboard', 'AdminController@dashboard');
+Route::get('/logout', 'AdminController@logout');

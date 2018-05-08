@@ -12,8 +12,12 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function dashboard($value='')
+    public function dashboard()
     {
         return view('admin.dashboard');
+    }
+    public function logout () {
+        auth()->logout();
+        return redirect('/administrator');
     }
 }

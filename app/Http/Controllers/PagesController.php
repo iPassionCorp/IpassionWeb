@@ -27,8 +27,4 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    // public function forgot(){
-    //     return view('admin.forgot');
-    // }
-
 }
