@@ -18,10 +18,10 @@ Route::get('/devops', 'PagesController@devops');
 Route::get('/careers', 'PagesController@careers');
 Route::get('/contact-us', 'PagesController@contact');
 
-Auth::routes();
 
+Auth::routes();
 // Administrator
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'AdminController@logout');
 Route::get('/administrator', 'Auth\LoginController@loginAdmin');
 Route::get('/administrator/dashboard', 'AdminController@dashboard');
-Route::get('/logout', 'AdminController@logout');
+Route::get('/administrator/user', 'AdminController@user');

@@ -32,8 +32,14 @@
 
     </head>
     <body>
-        @include('admin.layouts.header')
-        @yield('content')
+        <div id="wrapper">
+            @include('admin.layouts.header')
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
          <!-- jQuery -->
         <script src="{{asset('/admin/vendor/jquery/jquery.min.js')}}"></script>
         <!-- Bootstrap Core JavaScript -->
