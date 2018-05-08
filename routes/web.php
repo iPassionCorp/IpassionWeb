@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Pages
+Route::get('/', 'PagesController@index');
+Route::get('/development', 'PagesController@development');
+Route::get('/devops', 'PagesController@devops');
+Route::get('/careers', 'PagesController@careers');
+Route::get('/contact-us', 'PagesController@contact');
+
+Auth::routes();
+
+// Administrator
+Route::get('/administrator', 'Autp\LoginController@loginAdmin');
+// Route::get('/forgot-password', 'PagesController@forgot');
+Route::get('/administrator/dashboard', 'AdminController@dashboard');
