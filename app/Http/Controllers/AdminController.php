@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 
@@ -23,9 +22,4 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function user($value='')
-    {
-        $users = User::all();
-        return view('admin.user.user',compact('users'));
-    }
 }

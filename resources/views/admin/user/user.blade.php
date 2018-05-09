@@ -2,8 +2,13 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">User Management</h1>
+        <div class="col-sm-12">
+            <h1 class="page-header">
+                User Management
+                <a class="btn btn-success pull-right mt" href="{{url('/administrator/user/create')}}"><i class="fa fa-plus"></i> Create</a>
+            </h1>
+        </div>
+        <div class="col-sm-12">
             <table id="userList" width="100%" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
@@ -16,17 +21,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $usr)
+                        @foreach($users as $item)
                             <tr>
                                 <td class="text-center"></td>
-                                <td>{{$usr->name}}</td>
-                                <td>{{$usr->email}}</td>
-                                <td>{{$usr->created_at}}</td>
-                                <td>{{$usr->updated_at}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->email}}</td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->updated_at}}</td>
                                 <td>
-                                    @if ($usr->email == 'jirayus.p@ipassion.co.th')
+                                    @if ($item->email == 'jirayus.p@ipassion.co.th')
                                     @else
-                                        <a class="btn btn-primary">Edit</a>
+                                        <a class="btn btn-primary" href="">Edit</a>
                                         <a class="btn btn-danger">Delete</a>     
                                     @endif
                                 </td>

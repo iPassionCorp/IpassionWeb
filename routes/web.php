@@ -24,4 +24,7 @@ Auth::routes();
 Route::get('/logout', 'AdminController@logout');
 Route::get('/administrator', 'Auth\LoginController@loginAdmin');
 Route::get('/administrator/dashboard', 'AdminController@dashboard');
-Route::get('/administrator/user', 'AdminController@user');
+
+//User
+Route::get('/administrator/user', 'UserController@user');
+Route::get('/administrator/user/create', 'UserController@create');
