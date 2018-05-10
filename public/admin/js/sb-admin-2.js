@@ -40,3 +40,72 @@ $(function() {
         }
     }
 });
+
+/**
+ * Description 	: Modal Success saved 
+ **/
+function modalSaveSuccess(){
+    swal({
+        title: 'Saved successfully!',
+        text: '',
+        type: 'success',
+        timer: 1500,
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+}
+
+/**
+ * Description 	: Modal Success delete 
+ **/
+function modalDeleteSuccess(){
+    swal({
+        title: 'Delete successfully!',
+        text: '',
+        type: 'success',
+        timer: 1500,
+        allowOutsideClick: false,
+        showConfirmButton: false
+    });
+}
+
+function displayDatatables(tableID){
+    var t = $(tableID).DataTable({
+        responsive: true,
+        columnDefs: [{
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        order: [[ 1, 'desc' ]]
+    });
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    }).draw();
+}
+
+function displayDatatablesDisable(tableID){
+    var t = $(tableID).DataTable({
+        responsive: true,
+        columnDefs: [{
+            "searchable": false,
+            "orderable": false,
+            "targets": [0,1,2,3,4,5]
+        } ],
+        order: false,
+        info: false,
+        searching: false,
+        lengthChange: false,
+        paging: false
+
+    });
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    }).draw();
+}

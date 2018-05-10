@@ -10,7 +10,7 @@ body {
   width: 100%;
 }
 #page-wrapper {
-  padding: 0 15px;
+  padding: 0 15px 30px 15px;
   min-height: 568px;
   background-color: white;
 }
@@ -18,7 +18,7 @@ body {
   #page-wrapper {
     position: inherit;
     margin: 0 0 0 250px;
-    padding: 0 30px;
+    padding: 0 30px 30px 30px;
     border-left: 1px solid #e7e7e7;
   }
 }
@@ -404,6 +404,25 @@ table.dataTable thead .sorting:after {
 }
 .mt{
   margin-top: 5px;
+}
+/* CUSTOM SWEET ALERT */
+.sweet-alert .sa-button-container button{
+  padding: 7px 15px !important;
+  margin: 0px 3px;
+}
+.sa-button-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.sa-button-container .cancel {
+  -webkit-order: 2;
+  order: 2;
+}
+.sa-button-container .sa-confirm-button-container {
+  -webkit-order: 1;
+  order: 1;
 }
 @media (max-width: 767px) {
   ul.timeline:before {

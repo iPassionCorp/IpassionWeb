@@ -39,16 +39,12 @@
                         <a href="{{url('/administrator/dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Pages<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login Page</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Pages Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{url('/administrator/pages')}}">Pages Content</a>
+                                </li>
+                            </ul>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings Management<span class="fa arrow"></span></a>

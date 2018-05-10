@@ -13,11 +13,11 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Create Date</th>
-                            <th>Update Date</th>
-                            <th>Actions</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Create Date</th>
+                            <th class="text-center">Update Date</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,21 +46,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            var t = $('#userList').DataTable({
-                responsive: true,
-                columnDefs: [{
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": 0
-                } ],
-                order: [[ 1, 'asc' ]]
-            });
-
-            t.on( 'order.dt search.dt', function () {
-                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                    cell.innerHTML = i+1;
-                } );
-            }).draw();
+            displayDatatables('#userList');
         });
     </script>
 @endsection
