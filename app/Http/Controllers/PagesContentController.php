@@ -69,7 +69,7 @@ class PagesContentController extends Controller
         if ($pages) {
             return response()->json(['success'=>'Successfully.']);
         }else{
-            return redirect('/administrator/pages/')->with('danger','Delete movie fail');
+            return redirect('/administrator/pages/')->with('danger','Delete fail');
         }
     }
 

@@ -54,7 +54,7 @@
                         <li>Black Box testing experience </li>
                       </ul>
                       <p>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#careeModal">Apply Now</button>
+                        <button type="button" class="btn btn-primary apply-job" data-toggle="modal" data-target="#careeModal" data-job="QA Tester">Apply Now</button>
                       </p>
                     </div>
                   </div>
@@ -88,7 +88,7 @@
                         <li>Bachelor's Degree in Computer Science or equivalent </li>
                       </ul>
                       <p>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#careeModal">Apply Now</button>
+                        <button type="button" class="btn btn-primary apply-job" data-toggle="modal" data-target="#careeModal" data-job="Java Developer">Apply Now</button>
                       </p>
                     </div>
                   </div>
@@ -103,37 +103,62 @@
     <div class="modal fade" id="careeModal" tabindex="-1" role="dialog" aria-labelledby="careeModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form action="#">
+          <form id="apply-job" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <input type="hidden" id="job_title" name="job_title">
               <div class="modal-header">
-                  <h5 class="modal-title" id="careeModalLabel"><strong>Apply Job</strong></h5>
+                  <h5 class="modal-title" id="careeModalLabel"><strong>Apply Job:</strong> <span id="job-txt"></span></h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" required>
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="E-mail">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
                   </div>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Mobile Number">
+                      <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile Number" required>
                   </div>
                   <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="upload_cv">
-                        <label class="custom-file-label" for="upload_cv">CV Upload</label>
+                        <input type="file" class="custom-file-input" id="upload_cv" name="upload_cv" required>
+                        <label id="filename" class="custom-file-label" for="upload_cv">CV Upload</label>
                       </div>
                   </div>
-                  <small class="text-warning">* File Types : PDF, Doc</small>
+                  <small class="text-warning">* Only PDF file</small>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Submit</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
                 </div>
           </form>
         </div>
       </div>
     </div>
+@endsection
+
+@section('js')
+  <script>
+   $(document).ready(function() {
+     
+
+      $('.apply-job').on('click', function(){
+        var job = $(this).data('job');
+        $('#job_title').val(job);
+        $('#job-txt').text(job);
+      });  
+      $('#upload_cv').on('change', function() {
+        var file = $('#upload_cv')[0].files[0].name;
+        $('label#filename').text(file);
+      });
+      $('.close-modal').on('click', function(){
+        clearApplyForm('apply-job');
+      }); 
+
+    });
+  </script>
+</script>
 @endsection

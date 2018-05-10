@@ -424,6 +424,9 @@ table.dataTable thead .sorting:after {
   -webkit-order: 1;
   order: 1;
 }
+table tbody tr td.dataTables_empty{
+  text-align: center;
+}
 @media (max-width: 767px) {
   ul.timeline:before {
     left: 40px;

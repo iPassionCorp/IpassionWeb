@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contacts;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
@@ -24,4 +25,20 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    public function contactList()
+    {
+        $contacts = Contacts::all();
+        return view('admin.contact_form',compact('contacts'));
+    }
+
+    public function contactDelete($id)
+    {
+        $Contacts = Contacts::find($id)->delete();
+
+        if ($Contacts) {
+            return response()->json(['success'=>'Successfully.']);
+        }else{
+            return redirect('/administrator/contact-form/')->with('danger','Delete fail');
+        }
+    }
 }

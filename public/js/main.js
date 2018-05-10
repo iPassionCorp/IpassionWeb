@@ -20,3 +20,8 @@
   $(window).scroll(navbarCollapse);
 
 })(jQuery); // End of use strict
+
+function clearApplyForm(formID) {
+  document.getElementById(formID).reset();
+  $('label#filename').text('CV Upload');
+}

@@ -39,5 +39,6 @@
         <script src="{{ asset('/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
         <!-- Custom scripts -->
         <script src="{{ asset('/js/main.js') }}"></script>
+        @yield('js')
     </body>
 </html>

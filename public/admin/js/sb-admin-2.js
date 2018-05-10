@@ -69,7 +69,7 @@ function modalDeleteSuccess(){
     });
 }
 
-function displayDatatables(tableID){
+function displayDatatables(tableID, order){
     var t = $(tableID).DataTable({
         responsive: true,
         columnDefs: [{
@@ -77,7 +77,7 @@ function displayDatatables(tableID){
             "orderable": false,
             "targets": 0
         } ],
-        order: [[ 1, 'desc' ]]
+        order: [[ 1, order ]]
     });
 
     t.on( 'order.dt search.dt', function () {

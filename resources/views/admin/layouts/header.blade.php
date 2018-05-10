@@ -47,6 +47,14 @@
                             </ul>
                     </li>
                     <li>
+                            <a href="#"><i class="fa fa-tasks fa-fw"></i> Application Form<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{url('/administrator/contact-form')}}">Contact Form</a>
+                                    </li>
+                                </ul>
+                        </li>
+                    <li>
                         <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

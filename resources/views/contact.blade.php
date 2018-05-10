@@ -25,45 +25,67 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-sm-12 col-lg-8">
-              <form action="#">
+              <form method="POST" action="{{url('/contact-us')}}">
+                {{ csrf_field() }}
                 <h3 class="text-primary"><strong>Let's work together</strong></h3>
                 <p>We're collaborating with some of the largest brands in the world, as well as with startups. We’d love to learn your needs, vision and explore how we can assist exceeding your goals.</p>
                 <div class="row">
+                  <div class="col-12">
+                      @if(session()->has('success'))
+                          <div class="alert alert-success">
+                              {{ session()->get('success') }}
+                          </div>
+                      @elseif(session()->has('fail'))
+                          <div class="alert alert-danger">
+                              {{ session()->get('fail') }}
+                          </div>
+                      @endif                  
+                  </div>
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <label><strong>Subject</strong> <span class="text-danger">*</span></label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Your Subject..." required>
+                          </div>
+                    </div>
                   <div class="col-12 col-sm-12 col-md-6">
                       <div class="form-group">
                           <label><strong>Full Name</strong> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" placeholder="Your Full Name...">
+                          <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Your Full Name..." required>
                         </div>
                   </div>
                   <div class="col-12 col-sm-12 col-md-6">
                       <div class="form-group">
                           <label><strong>Email</strong> <span class="text-danger">*</span></label>
-                          <input type="email" class="form-control" placeholder="Your Email...">
+                          <input type="email" id="email" name="email" class="form-control" placeholder="Your Email..." required>
                         </div>
                   </div>
                   <div class="col-12 col-sm-12 col-md-6">
                       <div class="form-group">
                           <label><strong>Contact Name</strong> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" placeholder="Your Contact Name...">
+                          <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Your Contact Name..." required>
                         </div>
                   </div>
                   <div class="col-12 col-sm-12 col-md-6">
                       <div class="form-group">
                           <label><strong>Mobile</strong> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" placeholder="Your Mobile...">
+                          <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Your Mobile..." required>
                         </div>
                   </div>
                   <div class="col-12 col-sm-12 col-md-6">
                         <div class="form-group">
                             <label><strong>Line ID:</strong></label>
-                            <input type="text" class="form-control" placeholder="Your Line ID...">
+                            <input type="text" id="line_id" name="line_id" class="form-control" placeholder="Your Line ID...">
                           </div>
                     </div>
-                  <div class="col-12 col-sm-12 col-md-6">
+                  <div class="col-12">
                       <div class="form-group">
-                          <label><strong>Description:</strong></label>
-                          <textarea class="form-control" rows="5"></textarea>
+                          <label><strong>Message:</strong> <span class="text-danger">*</span></label>
+                          <textarea id="message" name="message" class="form-control" rows="5" placeholder="Your Message..." required></textarea>
                         </div>
+                  </div>
+                  <div class="col-12 text-right">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
                   </div>
                 </div>
               </form>
