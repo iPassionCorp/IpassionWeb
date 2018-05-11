@@ -52,6 +52,9 @@
                                     <li>
                                         <a href="{{url('/administrator/contact-form')}}">Contact Form</a>
                                     </li>
+                                    <li>
+                                        <a href="{{url('/administrator/careers-form')}}">Careers Form</a>
+                                    </li>
                                 </ul>
                         </li>
                     <li>

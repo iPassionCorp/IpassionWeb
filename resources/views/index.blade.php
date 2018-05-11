@@ -135,46 +135,10 @@ Test Consultation | Mobile App Testing | Web App Testing | Test Automation | Per
       <div class="container">
           <div class="row">
               <div class="col-lg-12 text-center">
-                <h2 class="section-heading"><strong>Our Team</strong></h2>
+                <h2 class="section-heading"><strong>Our Client & Partnership</strong></h2>
                 <hr class="line my-4">
               </div>
           </div>
-        <div class="row">
-          <div class="col-lg-3 col-sm-6">
-            <div class="portfolio-box">
-              <img src="{{ asset('images/content/avatar.png') }}" class="w-100">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-name">
-                    <i class="fa fa-linkedin"></i>&nbsp;
-                    <i class="fa fa-envelope"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center pt-2 pb-3">
-              <h5 class="m-0"><strong>Staff Name</strong></h5>
-              <span>Founder</span>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-              <div class="portfolio-box">
-                <img src="{{ asset('images/content/avatar.png') }}" class="w-100">
-                <div class="portfolio-box-caption">
-                  <div class="portfolio-box-caption-content">
-                    <div class="project-name">
-                      <i class="fa fa-linkedin"></i>&nbsp;
-                      <i class="fa fa-envelope"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center pt-2 pb-3">
-                <h5 class="m-0"><strong>Staff Name</strong></h5>
-                <span>CEO</span>
-              </div>
-            </div>
-        </div>
       </div>
     </section>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\ApplyJobs;
 use Mail;
 use DB;
 use Illuminate\Http\Request;
@@ -67,4 +68,25 @@ class PagesController extends Controller
         }
     }
 
+    public function applyJob(Request $req){
+        if ($req->hasFile('cv_upload')){
+            $temp = explode(".", $req->file('cv_upload')->getClientOriginalName());
+            $filename = round(microtime(true)) . '.' . end($temp);
+            // $filename = $req->file('cv_upload')->getClientOriginalName();
+            $destination = base_path() . '/public/storage/cv-upload';
+            $req->file('cv_upload')->move($destination, $filename);
+            DB::table('jobs')->insert(
+                [
+                    'job_title'=>$req->job_title,
+                    'fullname'=>$req->fullname,
+                    'email'=>$req->email,
+                    'mobile'=>$req->mobile,
+                    'cv_upload'=>$filename,
+                    'created_at'=>\Carbon\Carbon::now()
+                ]
+            );
+        }
+
+        return redirect()->back()->with('success', 'Job application successful!');
+    }
 }

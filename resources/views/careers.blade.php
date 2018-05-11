@@ -25,6 +25,13 @@
           </div>
           <div class="row">
             <div class="col-12">
+              @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+              @endif   
+            </div>
+            <div class="col-12">
               <div class="accordion" id="accordionCaree">
                 <div class="card">
                   <div class="card-header" id="heading1">
@@ -54,7 +61,7 @@
                         <li>Black Box testing experience </li>
                       </ul>
                       <p>
-                        <button type="button" class="btn btn-primary apply-job" data-toggle="modal" data-target="#careeModal" data-job="QA Tester">Apply Now</button>
+                        <button type="button" class="btn btn-primary apply-modal" data-toggle="modal" data-target="#careeModal" data-job="QA Tester">Apply Now</button>
                       </p>
                     </div>
                   </div>
@@ -88,7 +95,7 @@
                         <li>Bachelor's Degree in Computer Science or equivalent </li>
                       </ul>
                       <p>
-                        <button type="button" class="btn btn-primary apply-job" data-toggle="modal" data-target="#careeModal" data-job="Java Developer">Apply Now</button>
+                        <button type="button" class="btn btn-primary apply-modal" data-toggle="modal" data-target="#careeModal" data-job="Java Developer">Apply Now</button>
                       </p>
                     </div>
                   </div>
@@ -103,7 +110,7 @@
     <div class="modal fade" id="careeModal" tabindex="-1" role="dialog" aria-labelledby="careeModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form id="apply-job" enctype="multipart/form-data">
+          <form id="apply-job" method="POST" action="{{url('/careers')}}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="job_title" name="job_title">
               <div class="modal-header">
@@ -124,11 +131,12 @@
                   </div>
                   <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="upload_cv" name="upload_cv" required>
-                        <label id="filename" class="custom-file-label" for="upload_cv">CV Upload</label>
+                        <input type="file" class="custom-file-input" id="cv_upload" name="cv_upload" required>
+                        <label id="filename" class="custom-file-label" for="cv_upload">CV Upload</label>
                       </div>
                   </div>
                   <small class="text-warning">* Only PDF file</small>
+                  <div id="txtpdf"></div>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -144,19 +152,42 @@
   <script>
    $(document).ready(function() {
      
-
-      $('.apply-job').on('click', function(){
+      $('.apply-modal').on('click', function(){
         var job = $(this).data('job');
         $('#job_title').val(job);
         $('#job-txt').text(job);
       });  
-      $('#upload_cv').on('change', function() {
-        var file = $('#upload_cv')[0].files[0].name;
+      $('#cv_upload').on('change', function() {
+        var file = $('#cv_upload')[0].files[0].name;
         $('label#filename').text(file);
       });
       $('.close-modal').on('click', function(){
         clearApplyForm('apply-job');
       }); 
+      $('#apply-job').validate({
+        rules: {
+            fullname: {
+                required: true
+            },
+            email: {
+              required: true
+            },
+            mobile: {
+              required: true
+            },
+            cv_upload: {
+              required: true,
+              extension: "pdf"
+            }
+        },
+        errorPlacement: function(error, element) {
+            if(element.attr("name") === "cv_upload") {
+                error.insertAfter("#txtpdf");
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
 
     });
   </script>

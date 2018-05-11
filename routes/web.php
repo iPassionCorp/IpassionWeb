@@ -16,6 +16,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/development', 'PagesController@development');
 Route::get('/devops', 'PagesController@devops');
 Route::get('/careers', 'PagesController@careers');
+Route::post('/careers', 'PagesController@applyJob');
 Route::get('/contact-us', 'PagesController@contact');
 Route::post('/contact-us', 'PagesController@postContact');
 
@@ -41,3 +42,5 @@ Route::post('/administrator/pages/edit', 'PagesContentController@update');
 // Application Form
 Route::get('/administrator/contact-form', 'AdminController@contactList');
 Route::delete('/administrator/contact-form/delete/{id}', 'AdminController@contactDelete');
+Route::get('/administrator/careers-form', 'CareersController@applyJobList');
+Route::delete('/administrator/careers-form/delete/{id}', 'CareersController@applyJobDelete');

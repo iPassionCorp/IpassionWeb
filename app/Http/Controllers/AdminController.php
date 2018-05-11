@@ -33,12 +33,12 @@ class AdminController extends Controller
 
     public function contactDelete($id)
     {
-        $Contacts = Contacts::find($id)->delete();
+        $contacts = Contacts::find($id)->delete();
 
-        if ($Contacts) {
+        if ($contacts) {
             return response()->json(['success'=>'Successfully.']);
         }else{
-            return redirect('/administrator/contact-form/')->with('danger','Delete fail');
+            return redirect('/administrator/contact-form')->with('danger','Delete fail');
         }
     }
 }

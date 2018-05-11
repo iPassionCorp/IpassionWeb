@@ -331,3 +331,20 @@ header.content-head{
 .btn-primary:active, .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 79, 125, 0.5) !important;
 }
+
+/*------------------
+	Form Validation
+--------------------*/
+.error{
+  color: red;
+}
+.form-control.error{
+  border-color: red;
+}
+.form-control.error:focus{
+  border-color: red;
+  box-shadow:0 0 0 0.2rem rgba(255,0,0,.25)
+}
+.border-radius-0{
+  border-radius: 0 !important;
+}

@@ -37,6 +37,8 @@
         <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Plugin JavaScript -->
         <script src="{{ asset('/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('/vendor/jquery-validate/jquery.validate.min.js') }}"></script>
+        <script src="{{ asset('/vendor/jquery-validate/additional-methods.min.js') }}"></script>
         <!-- Custom scripts -->
         <script src="{{ asset('/js/main.js') }}"></script>
         @yield('js')
