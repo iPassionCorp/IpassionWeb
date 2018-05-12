@@ -35,7 +35,6 @@ Route::get('/administrator/user/create', 'UserController@create');
 Route::get('/administrator/pages', 'PagesContentController@listPages');
 Route::get('/administrator/pages/edit/{id}', 'PagesContentController@edit');
 Route::post('/administrator/pages/edit', 'PagesContentController@update');
-Route::get('/administrator/pages', 'PagesContentController@listPages');
 
 // Application Form
 Route::get('/administrator/contact-form', 'AdminController@contactList');
