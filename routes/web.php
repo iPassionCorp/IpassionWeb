@@ -33,11 +33,8 @@ Route::get('/administrator/user/create', 'UserController@create');
 
 //Pages Content
 Route::get('/administrator/pages', 'PagesContentController@listPages');
-// Route::get('/administrator/pages/create', 'PagesContentController@create');
-// Route::post('/administrator/pages/create', 'PagesContentController@store');
 Route::get('/administrator/pages/edit/{id}', 'PagesContentController@edit');
 Route::post('/administrator/pages/edit', 'PagesContentController@update');
-// Route::delete('/administrator/pages/delete/{id}', 'PagesContentController@delete');
 
 // Application Form
 Route::get('/administrator/contact-form', 'AdminController@contactList');
