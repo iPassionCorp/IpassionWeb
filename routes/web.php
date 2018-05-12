@@ -33,14 +33,20 @@ Route::get('/administrator/user/create', 'UserController@create');
 
 //Pages Content
 Route::get('/administrator/pages', 'PagesContentController@listPages');
-// Route::get('/administrator/pages/create', 'PagesContentController@create');
-// Route::post('/administrator/pages/create', 'PagesContentController@store');
 Route::get('/administrator/pages/edit/{id}', 'PagesContentController@edit');
 Route::post('/administrator/pages/edit', 'PagesContentController@update');
-// Route::delete('/administrator/pages/delete/{id}', 'PagesContentController@delete');
+Route::get('/administrator/pages', 'PagesContentController@listPages');
 
 // Application Form
 Route::get('/administrator/contact-form', 'AdminController@contactList');
 Route::delete('/administrator/contact-form/delete/{id}', 'AdminController@contactDelete');
 Route::get('/administrator/careers-form', 'CareersController@applyJobList');
 Route::delete('/administrator/careers-form/delete/{id}', 'CareersController@applyJobDelete');
+
+// Careers Content
+Route::get('/administrator/careers', 'CareersController@view');
+Route::get('/administrator/careers/create', 'CareersController@create');
+Route::post('/administrator/careers/create', 'CareersController@store');
+Route::get('/administrator/careers/edit/{id}', 'CareersController@edit');
+Route::post('/administrator/careers/edit', 'CareersController@update');
+Route::delete('/administrator/careers/delete/{id}', 'CareersController@delete');

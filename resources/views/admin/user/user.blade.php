@@ -46,7 +46,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            displayDatatables('#userList', 'asc');
+            displayDatatables('#userList', '1', 'asc');
         });
     </script>
 @endsection

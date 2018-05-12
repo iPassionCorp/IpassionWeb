@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Pages;
 use App\Contact;
 use App\ApplyJobs;
+use App\Careers;
 use Mail;
 use DB;
 use Illuminate\Http\Request;
@@ -11,7 +13,8 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        return view('index');
+        $home = DB::table('pages')->where('page', '=', 'Home')->limit(1)->get();
+        return view('index',compact('home'));
     }
 
     public function development(){
@@ -23,7 +26,8 @@ class PagesController extends Controller
     }
     
     public function careers(){
-        return view('careers');
+        $careers = DB::table('careers')->where('published', '=', 1)->orderBy('sort', 'asc')->get();
+        return view('careers',compact('careers'));
     }
 
     public function contact(){
@@ -72,7 +76,6 @@ class PagesController extends Controller
         if ($req->hasFile('cv_upload')){
             $temp = explode(".", $req->file('cv_upload')->getClientOriginalName());
             $filename = round(microtime(true)) . '.' . end($temp);
-            // $filename = $req->file('cv_upload')->getClientOriginalName();
             $destination = base_path() . '/public/storage/cv-upload';
             $req->file('cv_upload')->move($destination, $filename);
             DB::table('jobs')->insert(

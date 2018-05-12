@@ -32,74 +32,28 @@
               @endif   
             </div>
             <div class="col-12">
-              <div class="accordion" id="accordionCaree">
+              <div class="accordion" id="accordionCareers">
+                @foreach($careers as $key=>$item)
                 <div class="card">
-                  <div class="card-header" id="heading1">
+                  <div class="card-header" id="heading{{$item->id}}">
                     <h5 class="mb-0">
-                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                        QA Tester
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
+                        {{$item->job_title}}
                       </button>
                     </h5>
                   </div>
               
-                  <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionCaree">
+                  <div id="collapse{{$item->id}}" class="{{ $loop->first ? "collapse show" : "collapse" }}" aria-labelledby="heading{{$item->id}}" data-parent="#accordionCareers">
                     <div class="card-body">
-                      <p><strong>RESPONSIBILITIES</strong></p>
-                      <ul>
-                        <li>Draft test plans with a strategic selection of test methods and approach </li>
-                        <li>Develop test suites, cases, estimations, and report on durations </li>
-                        <li>Execute test, document test results, and measure impact </li>
-                        <li>Report on the user experience and test results, escalating when necessary </li>
-                        <li>Understand design tenets and be an oracle of knowledge for a component, system, or feature </li>
-                        <li>Ensure test tool data is high quality, fully traceable, and updated daily </li>
-                        <li>Document and maintain all necessary testware </li><li>Other duties as assigned </li>
-                      </ul>
-                      <p><strong>REQUIREMENTS</strong></p>
-                      <ul>
-                        <li>Bachelor’s degree in related field or equivalent experience </li>
-                        <li>2-3 years Software testing experience </li>
-                        <li>Black Box testing experience </li>
-                      </ul>
+                        {!!$item->detail!!}
                       <p>
-                        <button type="button" class="btn btn-primary apply-modal" data-toggle="modal" data-target="#careeModal" data-job="QA Tester">Apply Now</button>
+                        <br>
+                        <button type="button" class="btn btn-primary apply-modal" data-toggle="modal" data-target="#careeModal" data-job="{{$item->job_title}}">Apply Now</button>
                       </p>
                     </div>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card-header" id="heading2">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                        Java Developer
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionCaree">
-                    <div class="card-body">
-                      <p><strong>RESPONSIBILITIES</strong></p>
-                      <ul>
-                        <li>Translate business requirements into technical specifications </li>
-                        <li>Work closely with business and technical teams on the product from initial analysis through implementation </li><li>Develop and maintain Java/J2EE applications in the development and test environments with minimal supervision from the Senior Software Engineering Staff. </li>
-                        <li>Develop updates, corrections, or enhancements including Business Logic in Java &amp; SQL. </li>
-                        <li>Provide analysis and recommendations for external J2EE technologies which could enhance and improve products to meet business needs. </li>
-                        <li>Work with Operations Team on Application Deployment Issues. </li>
-                      </ul>
-                      <p><strong>REQUIREMENTS</strong></p>
-                      <ul>
-                        <li>Java, Spring or Hibernate. J2EE experience is preferred.&nbsp; </li>
-                        <li>Hands-on experience with relational databases or other database type development </li>
-                        <li>Hands-on experience with automated testing, continuous integration, and automated deployments </li>
-                        <li>Ability to innovate and present new ideas/solutions </li>
-                        <li>Ability to work collaboratively </li>
-                        <li>Strong experience working with Agile development </li>
-                        <li>Bachelor's Degree in Computer Science or equivalent </li>
-                      </ul>
-                      <p>
-                        <button type="button" class="btn btn-primary apply-modal" data-toggle="modal" data-target="#careeModal" data-job="Java Developer">Apply Now</button>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
@@ -111,7 +65,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <form id="apply-job" method="POST" action="{{url('/careers')}}" enctype="multipart/form-data">
-              {{ csrf_field() }}
+              @csrf
               <input type="hidden" id="job_title" name="job_title">
               <div class="modal-header">
                   <h5 class="modal-title" id="careeModalLabel"><strong>Apply Job:</strong> <span id="job-txt"></span></h5>

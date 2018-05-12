@@ -14,22 +14,22 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th class="text-center">Job Title</th>
-                            <th class="text-center">Detail</th>
+                            <th class="text-center">Careers Status</th>
                             <th class="text-center">Created Date</th>
                             <th class="text-center">Updated Date</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($carees as $item)
+                        @foreach($careers->sortBy('sort') as $item)
                             <tr>
                                 <td class="text-center"></td>
                                 <td>{{$item->job_title}}</td>
-                                <td>{{$item->detail}}</td>
+                                <td class="text-center">{!! $item->published == "1" ? '<i class="fa fa-eye" aria-hidden="true"></i>' : '<i class="fa fa-eye-slash" aria-hidden="true"></i>' !!}</td>
                                 <td class="text-center">{{date_format($item->created_at,"d/m/Y H:i:s")}}</td>
                                 <td class="text-center">{{date_format($item->updated_at,"d/m/Y H:i:s")}}</td>
                                 <td class="text-center">
-                                    <a href="#" class="btn btn-primary">Edit</a>
+                                    <a href="{{url('/administrator/careers/edit/'.$item->id)}}" class="btn btn-primary">Edit</a>
                                     <a href="#" class="btn btn-danger delete" data-id="{{$item->id}}" data-token="{{ csrf_token() }}">Delete</a>
                                 </td>
                             </tr>
@@ -44,7 +44,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            displayDatatables('#careersList', '6', 'desc');
+            displayDatatablesDisableOrder('#careersList');
             $('.delete').on('click', function(e){
                 e.preventDefault();
                 var id = $(this).data('id');
@@ -64,7 +64,7 @@
                 if (isConfirm) {
                     	$.ajax({
                             type: "DELETE",
-                            url: "{{url('/administrator/careers-form/delete')}}/"+id,
+                            url: "{{url('/administrator/careers/delete')}}/"+id,
                             data: { 
                                 "id": id,
                                 "_token": token,

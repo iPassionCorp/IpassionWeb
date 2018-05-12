@@ -1,5 +1,36 @@
 $(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('#side-menu').metisMenu();
+    $('textarea#detail').summernote({
+        height: 500,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['view', ['fullscreen', 'codeview']]
+        ]         
+    });
+    $('textarea#content').summernote({
+        height: 500,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['view', ['fullscreen', 'codeview']]
+        ]         
+    });
 });
 
 //Loads the correct sidebar on window load,
@@ -25,19 +56,14 @@ $(function() {
     });
 
     var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
+    var element = $('ul.nav a').filter(function() {
+        return this.href == url;
+    }).addClass('active').parent().parent().addClass('in').parent();
     var element = $('ul.nav a').filter(function() {
         return this.href == url;
     }).addClass('active').parent();
-
-    while (true) {
-        if (element.is('li')) {
-            element = element.parent().addClass('in').parent();
-        } else {
-            break;
-        }
+    if (element.is('li')) { 
+         element.addClass('active').parent().parent('li').addClass('active')
     }
 });
 
@@ -78,6 +104,24 @@ function displayDatatables(tableID, columnOrder, order){
             "targets": 0
         } ],
         order: [[ columnOrder, order ]]
+    });
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    }).draw();
+}
+
+function displayDatatablesDisableOrder(tableID){
+    var t = $(tableID).DataTable({
+        responsive: true,
+        columnDefs: [{
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        order: []
     });
 
     t.on( 'order.dt search.dt', function () {

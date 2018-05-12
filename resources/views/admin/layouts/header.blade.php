@@ -44,6 +44,9 @@
                                 <li>
                                     <a href="{{url('/administrator/pages')}}">Pages Content</a>
                                 </li>
+                                <li>
+                                    <a href="{{url('/administrator/careers')}}">Careers Content</a>
+                                </li>
                             </ul>
                     </li>
                     <li>

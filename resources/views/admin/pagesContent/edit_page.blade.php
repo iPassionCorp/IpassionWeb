@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h1 class="page-header">
-                <a href="{{url('administrator/pages')}}"><i class="fa fa-arrow-circle-left"></i></a> Create Pages
+                <a href="{{url('administrator/pages')}}"><i class="fa fa-arrow-circle-left"></i></a> Edit Pages: <small>{{$pages->page}}</small>
             </h1>
         </div>
         <div class="col-sm-12">
@@ -28,7 +28,7 @@
                 <div class="col-sm-12">
                      <div class="form-group">
                         <label><strong>Content</strong></label>
-                        <textarea class="form-control" id="content" name="content" rows="5">{{$pages->content}}</textarea>
+                        <textarea class="form-control" id="content" name="content">{!!$pages->content!!}</textarea>
                     </div>
                 </div>
                 <div class="col-sm-12">

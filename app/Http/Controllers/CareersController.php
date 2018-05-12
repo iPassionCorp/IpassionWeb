@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs;
+use App\Careers;
 use Illuminate\Http\Request;
 
 class CareersController extends Controller
@@ -32,50 +33,51 @@ class CareersController extends Controller
     }
 
     //Careers Content
+    public function view()
+    {
+        $careers = Careers::all();
+        return view('admin.careers.careers_list',compact('careers'));
+    }
+
     public function create()
     {
-        return view('admin.pagesContent.create_page');
+        return view('admin.careers.create_careers');
     }
 
     public function store(Request $req)
     {
         $data = $req->all();
 
-    	$pages = new Pages();
-    	$pages->page = $data['page'];
-        $pages->title = $data['title'];
-        $pages->description = $data['description'];
-        $pages->content = $data['content'];
+    	$careers = new Careers();
+    	$careers->sort = $data['sort'];
+        $careers->job_title = $data['job_title'];
+        $careers->detail = $data['detail'];
+        $careers->published = $data['published'];
 
-    	if ($pages->save()) {
-		    return redirect('/administrator/pages/')->with('msg-success','successfully');
+    	if ($careers->save()) {
+		    return redirect('/administrator/careers/')->with('msg-success','successfully');
     	}else{
-		    return redirect('/administrator/pages/')->with('msg-danger','fail');
+		    return redirect('/administrator/careers/')->with('msg-danger','fail');
     	}
-    }
-
-    public function listPages(){
-        $pages = Pages::all();
-        return view('admin.pagesContent.list_pages',compact('pages'));
     }
 
     public function edit($id)
     {
-    	$pages = Pages::find($id);
-    	return view('admin.pagesContent.edit_page',compact('pages'));
+    	$careers = Careers::find($id);
+    	return view('admin.careers.edit_careers',compact('careers'));
     }
 
     public function update(Request $req)
     {
         $data = $req->all();
 
-        $pages = Pages::find($data['id']);
-        $pages->page = $data['page'];
-        $pages->title = $data['title'];
-        $pages->description = $data['description'];
-        $pages->content = $data['content'];
+        $careers = Careers::find($data['id']);
+        $careers->sort = $data['sort'];
+        $careers->job_title = $data['job_title'];
+        $careers->detail = $data['detail'];
+        $careers->published = $data['published'];
         
-        if ($pages->save()) {
+        if ($careers->save()) {
             return response()->json(['success'=>'Successfully.']);
         }else{
             return redirect()->back()->with('data', $data)->with('danger','fail');
@@ -84,9 +86,9 @@ class CareersController extends Controller
 
     public function delete($id)
     {
-        $pages = Pages::find($id)->delete();
+        $careers = Careers::find($id)->delete();
 
-        if ($pages) {
+        if ($careers) {
             return response()->json(['success'=>'Successfully.']);
         }else{
             return redirect('/administrator/pages/')->with('danger','Delete fail');
