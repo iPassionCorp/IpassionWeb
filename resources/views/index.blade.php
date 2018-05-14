@@ -39,7 +39,13 @@
                 <div id="clients-carousel">
                     @foreach($clients as $item)
                     <div class="slide">
-                        <img src="{{asset('/storage/clients/'.$item->image)}}" class="w-100">
+                        @if(!empty($item->url))
+                            <a href="{{$item->url}}" target="_blank">
+                                <img src="{{asset('/storage/clients/'.$item->image)}}" class="w-100">
+                            </a>
+                        @else
+                            <img src="{{asset('/storage/clients/'.$item->image)}}" class="w-100">
+                        @endif
                         <p class="pt-2 text-center"><strong>{{$item->name}}</strong></p>
                     </div>
                     @endforeach
@@ -55,9 +61,9 @@
 @endsection
 
 @section('js')
-<link rel="stylesheet" type="text/css" href="http://www.imancreative.com/iq-reviewer/assets/lib/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="http://www.imancreative.com/iq-reviewer/assets/lib/slick/slick-theme.css">
-<script type="text/javascript" src="http://www.imancreative.com/iq-reviewer/assets/lib/slick/slick.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('/vendor/slick/slick.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/vendor/slick/slick-theme.css')}}">
+<script type="text/javascript" src="{{asset('/vendor/slick/slick.min.js')}}"></script>
 
 <script>
     $( document ).ready(function() {
@@ -66,7 +72,7 @@
                 autoplaySpeed:2000,
                 dots: false,
                 infinite: true,
-                slidesToShow: 5,
+                slidesToShow: 6,
                 slidesToScroll: 1,
                 responsive: [
                     {
