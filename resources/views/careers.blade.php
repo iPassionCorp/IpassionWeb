@@ -5,9 +5,17 @@
         <div class="container my-auto">
         <div class="row">
             <div class="col-lg-10 mx-auto">
-            <h1 class="text-uppercase mb-5">
-                <strong>careers</strong>
-            </h1>
+              <h1 class="text-uppercase">
+                  <strong>{{ $pagecareers[0]->title }}</strong>
+              </h1>
+              @if((!empty($pagecareers[0]->description)))
+                <hr class="line">
+              @endif
+            </div>
+            <div class="col-lg-8 mx-auto">
+              <p class="text-faded mb-5">
+               {{ $pagecareers[0]->description }}
+              </p>
             </div>
         </div>
         </div>

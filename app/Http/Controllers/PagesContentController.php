@@ -50,7 +50,6 @@ class PagesContentController extends Controller
         $data = $req->all();
 
         $pages = Pages::find($data['id']);
-        $pages->page = $data['page'];
         $pages->title = $data['title'];
         $pages->description = $data['description'];
         $pages->content = $data['content'];

@@ -13,23 +13,26 @@
                 <input type="hidden" name="id" value="{{$pages->id}}">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label><strong>Page</strong></label>
-                        <input class="form-control" type="text" id="page" name="page" value="{{$pages->page}}" required>
-                    </div>
-                    <div class="form-group">
                         <label><strong>Title</strong></label>
                         <input class="form-control" type="text" id="title" name="title" value="{{$pages->title}}" required>
                     </div>
                     <div class="form-group">
                         <label><strong>Description</strong></label>
-                        <textarea class="form-control" id="description" name="description" rows="5"  required>{{$pages->description}}</textarea>
+                        <textarea class="form-control" id="description" name="description" rows="5">{{$pages->description}}</textarea>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                     <div class="form-group">
-                        <label><strong>Content</strong></label>
-                        <textarea class="form-control" id="content" name="content">{!!$pages->content!!}</textarea>
-                    </div>
+                    @if($pages->page == "Careers" || $pages->page == "Contact us")
+                        <div class="form-group" style="display: none;">
+                            <label><strong>Content</strong></label>
+                            <textarea class="form-control" id="content" name="content">{!!$pages->content!!}</textarea>
+                        </div>
+                    @else 
+                        <div class="form-group">
+                            <label><strong>Content</strong></label>
+                            <textarea class="form-control" id="content" name="content">{!!$pages->content!!}</textarea>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-sm-12">
                     <hr>

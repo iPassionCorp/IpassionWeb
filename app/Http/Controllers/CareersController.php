@@ -94,4 +94,5 @@ class CareersController extends Controller
             return redirect('/administrator/pages/')->with('danger','Delete fail');
         }
     }
+    
 }

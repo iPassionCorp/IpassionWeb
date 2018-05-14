@@ -20,9 +20,9 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Account Settings</a>
+                    {{-- <li><a href="{{url('/administrator/user/'.Auth::user()->id)}}"><i class="fa fa-gear fa-fw"></i> Account Settings</a>
                     </li>
-                    <li class="divider"></li>
+                    <li class="divider"></li> --}}
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
@@ -45,7 +45,10 @@
                                     <a href="{{url('/administrator/pages')}}">Pages Content</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('/administrator/careers')}}">Careers Content</a>
+                                        <a href="{{url('/administrator/clients')}}">Our Client & Partnership</a>
+                                    </li>
+                                <li>
+                                    <a href="{{url('/administrator/careers')}}">Careers Openings</a>
                                 </li>
                             </ul>
                     </li>
@@ -60,7 +63,7 @@
                                     </li>
                                 </ul>
                         </li>
-                    <li>
+                    {{-- <li>
                         <a href="#"><i class="fa fa-cogs fa-fw"></i> Settings Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -68,7 +71,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li> --}}
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

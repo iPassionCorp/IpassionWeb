@@ -28,8 +28,8 @@ Route::get('/administrator', 'Auth\LoginController@loginAdmin');
 Route::get('/administrator/dashboard', 'AdminController@dashboard');
 
 //User
-Route::get('/administrator/user', 'UserController@user');
-Route::get('/administrator/user/create', 'UserController@create');
+// Route::get('/administrator/user', 'UserController@user');
+// Route::get('/administrator/user/create', 'UserController@create');
 
 //Pages Content
 Route::get('/administrator/pages', 'PagesContentController@listPages');
@@ -49,3 +49,11 @@ Route::post('/administrator/careers/create', 'CareersController@store');
 Route::get('/administrator/careers/edit/{id}', 'CareersController@edit');
 Route::post('/administrator/careers/edit', 'CareersController@update');
 Route::delete('/administrator/careers/delete/{id}', 'CareersController@delete');
+
+// Clients
+Route::get('/administrator/clients', 'ClientsController@view');
+Route::get('/administrator/clients/create', 'ClientsController@create');
+Route::post('/administrator/clients/create', 'ClientsController@store');
+Route::get('/administrator/clients/edit/{id}', 'ClientsController@edit');
+Route::post('/administrator/clients/edit', 'ClientsController@update');
+Route::delete('/administrator/clients/delete/{id}', 'ClientsController@delete');

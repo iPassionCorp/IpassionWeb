@@ -6,13 +6,15 @@
           <div class="row">
             <div class="col-lg-10 mx-auto">
               <h1 class="text-uppercase">
-                <strong>CONTACT US</strong>
+                <strong>{{ $contact[0]->title }}</strong>
               </h1>
-              <hr class="line">
+              @if((!empty($contact[0]->description)))
+                <hr class="line">
+              @endif
             </div>
             <div class="col-lg-8 mx-auto">
               <p class="text-faded mb-5">
-                  Are you a Startup, SME, Enterprise, or an Investor looking for technology partners?
+                  {{ $contact[0]->description }}
               </p>
             </div>
           </div>

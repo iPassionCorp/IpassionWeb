@@ -45,7 +45,6 @@ class UserController extends Controller
         $usr->password = Hash::make($data['password']);
         
         if($usr->save()){
-            $this->setNewCache();
             return redirect('/administrator/user');
         }
     }

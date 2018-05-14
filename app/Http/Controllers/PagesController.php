@@ -14,24 +14,29 @@ class PagesController extends Controller
 {
     public function index(){
         $home = DB::table('pages')->where('page', '=', 'Home')->limit(1)->get();
-        return view('index',compact('home'));
+        $clients = DB::table('clients')->where('published', '=', 1)->orderBy('sort', 'asc')->get();
+        return view('index', compact('home', 'clients'));
     }
 
     public function development(){
-        return view('development');
+        $development = DB::table('pages')->where('page', '=', 'Development')->limit(1)->get();
+        return view('development', compact('development'));
     }
 
     public function devops(){
-        return view('devops');
+        $devops = DB::table('pages')->where('page', '=', 'Devops')->limit(1)->get();
+        return view('devops', compact('devops'));
     }
     
     public function careers(){
+        $pagecareers = DB::table('pages')->where('page', '=', 'Careers')->limit(1)->get();
         $careers = DB::table('careers')->where('published', '=', 1)->orderBy('sort', 'asc')->get();
-        return view('careers',compact('careers'));
+        return view('careers',compact('careers', 'pagecareers'));
     }
 
     public function contact(){
-        return view('contact');
+        $contact = DB::table('pages')->where('page', '=', 'Contact us')->limit(1)->get();
+        return view('contact', compact('contact'));
     }
 
     public function postContact(Request $req){
