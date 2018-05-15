@@ -11,11 +11,6 @@
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    return view('welcome');
-});
-=======
 // Pages
 Route::get('/', 'PagesController@index');
 Route::get('/development', 'PagesController@development');
@@ -62,4 +57,3 @@ Route::post('/administrator/clients/create', 'ClientsController@store');
 Route::get('/administrator/clients/edit/{id}', 'ClientsController@edit');
 Route::post('/administrator/clients/edit', 'ClientsController@update');
 Route::delete('/administrator/clients/delete/{id}', 'ClientsController@delete');
->>>>>>> develop
