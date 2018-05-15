@@ -27,7 +27,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-sm-12 col-lg-8">
-              <form method="POST" action="{{url('/contact-us')}}">
+              <form id="contact-form" method="POST" action="{{url('/contact-us')}}">
                 {{ csrf_field() }}
                 <h3 class="text-primary"><strong>Let's work together</strong></h3>
                 <p>We're collaborating with some of the largest brands in the world, as well as with startups. We’d love to learn your needs, vision and explore how we can assist exceeding your goals.</p>
@@ -105,4 +105,40 @@
           </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+<script>
+  $('#contact-form').validate({
+        rules: {
+            subject: {
+                required: true,
+                minlength: 3,
+                maxlength: 50,
+            },
+            fullname: {
+                required: true,
+                minlength: 3,
+                maxlength: 50,
+            },
+            email: {
+              required: true
+            },
+            mobile: {
+              required: true,
+              number: true,
+              minlength: 10,
+              maxlength: 10
+            },
+            contact_name: {
+              required: true
+            },
+            message:{
+              required: true,
+              minlength: 5,
+              maxlength: 500,
+            }
+        }
+    });
+</script>
 @endsection

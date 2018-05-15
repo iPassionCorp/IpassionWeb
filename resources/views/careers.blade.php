@@ -129,13 +129,18 @@
       $('#apply-job').validate({
         rules: {
             fullname: {
-                required: true
+                required: true,
+                minlength: 3,
+                maxlength: 50,
             },
             email: {
               required: true
             },
             mobile: {
-              required: true
+              required: true,
+              number: true,
+              minlength: 10,
+              maxlength: 10
             },
             cv_upload: {
               required: true,
@@ -153,5 +158,4 @@
 
     });
   </script>
-</script>
 @endsection
