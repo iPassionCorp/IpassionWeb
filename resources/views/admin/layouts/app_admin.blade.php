@@ -55,6 +55,8 @@
         <!-- Extends JS -->
         <script src="{{asset('/vendor/sweet-alert/sweetalert.js')}}"></script>
         <script src="{{asset('/admin/vendor/summernote/summernote.js')}}"></script>
+        <script src="{{asset('/vendor/jquery-validate/jquery.validate.min.js')}}"></script>
+        <script src="{{asset('/vendor/jquery-validate/additional-methods.min.js')}}"></script>
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('/admin/js/sb-admin-2.js')}}"></script>
         @yield('js')

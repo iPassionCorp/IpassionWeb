@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,8 +17,8 @@ class UserController extends Controller
     
     public function user()
     {
-        $users = User::all();
-        return view('admin.user.user',compact('users'));
+        $user = User::all();
+        return view('admin.user.user',compact('user'));
     }
 
     public function create()
@@ -26,26 +26,65 @@ class UserController extends Controller
         return view('admin.user.create_user');
     }
 
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:6|confirmed',
-    //     ]);
-    // }
-
-    protected function post(Request $req)
+    public function store(Request $req)
     {
         $data = $req->all();
+
+        $validator = Validator::make($data, [
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
         
-        $usr = new User();
-    	$usr->name = $data['name'];
-    	$usr->email = $data['email'];
-        $usr->password = Hash::make($data['password']);
+        $user = new User();
+    	$user->name = $data['name'];
+    	$user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
         
-        if($usr->save()){
+        if($validator->fails()){
+            return redirect('/administrator/user/create')->with('error','Email Existing');
+        }else{
+            $user->save();
             return redirect('/administrator/user');
         }
     }
+
+    public function edit($id)
+    {
+    	$user = User::find($id);
+    	return view('admin.user.edit_user',compact('user'));
+    }
+
+    public function update(Request $req)
+    {
+        $data = $req->all();
+
+        $user = User::find($data['id']);
+        $user->name = $data['name'];
+        
+        if($data['password']){
+            $user->password = Hash::make($data['password']);            
+            if ($user->save()) {
+                return response()->json(['success'=>'Successfully.']);
+            }else{
+                return redirect()->back()->with('data', $data)->with('danger','fail');
+            }
+        }else{
+            if ($user->save()) {
+                return response()->json(['success'=>'Successfully.']);
+            }else{
+                return redirect()->back()->with('data', $data)->with('danger','fail');
+            }
+        }
+    }        
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        if ($user) {
+            return response()->json(['success'=>'Successfully.']);
+        }else{
+            return redirect('/administrator/user/')->with('danger','Delete fail');
+        }
+    }
+
 }
