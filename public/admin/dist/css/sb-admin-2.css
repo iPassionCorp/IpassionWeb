@@ -427,6 +427,20 @@ table.dataTable thead .sorting:after {
 table tbody tr td.dataTables_empty{
   text-align: center;
 }
+
+/*------------------
+	Form Validation
+--------------------*/
+.error{
+  color: red;
+}
+.form-control.error{
+  border-color: red;
+}
+.form-control.error:focus{
+  border-color: red;
+  box-shadow:0 0 0 0.2rem rgba(255,0,0,.25)
+}
 @media (max-width: 767px) {
   ul.timeline:before {
     left: 40px;
