@@ -25,16 +25,12 @@
                     <input type="text" disabled value="{{$user->email}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label><b>Current Password:</b></label>
-                    <input id="current_password" type="password" class="form-control" name="current_password">
-                </div>
-                <div class="form-group">
                     <label><b>New Password:</b></label>
-                    <input id="new_password" type="password" class="form-control" name="new_password">
+                    <input id="password" type="password" class="form-control" name="password">
                 </div>
                 <div class="form-group">
-                    <label><b>Confirm Password:</b></label>
-                    <input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
+                    <label><b>Confirm New Password:</b></label>
+                    <input id="password_confirm" type="password" class="form-control" name="password_confirm">
                 </div>
                 <div class="col-sm-12">
                     <hr>
@@ -47,43 +43,95 @@
     </div>
 @endsection
 
-{{-- @section('js')
+@section('js')
 <script>
     $(document).ready(function(){
+        $('#edit-form').validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true
+                    },
+                    password: {
+                        minlength: 6
+                    },
+                    password_confirm: {
+                         required: function(element){
+                            return $("#password").val()!="";
+                        },
+                        equalTo: "#password"
+                    }
+                },
+                submitHandler: function(form) {
+                    swal({
+                            title: "Are you sure?",
+                            text: "",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes",
+                            cancelButtonText: "No",
+                            closeOnConfirm: true,
+                            closeOnCancel: true 
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "{{url('/administrator/user/edit')}}",
+                                        data: $(form).serialize(),
+                                        async: true,
+                                        success: function(response){
+                                            if(response){
+                                                modalSaveSuccess();
+                                                window.setTimeout(function(){
+                                                    window.location.href = "{{url('/administrator/user')}}";
+                                                }, 2000);
+                                            }                    
+                                        }
+                                    });
+                            }
+                        }
+                        );
+                }
+        });
+        
         $('#edit-form').submit(function(e){
 			e.preventDefault();
                 var inputData = $("#edit-form").serialize();
-            swal({
-                title: "Are you sure?",
-                text: "",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes",
-                cancelButtonText: "No",
-                closeOnConfirm: true,
-                closeOnCancel: true 
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    	$.ajax({
-                            type: "POST",
-                            url: "{{url('/administrator/user/edit')}}",
-                            data: inputData,
-                            async: true,
-                            success: function(response){
-                                if(response){
-                                    modalSaveSuccess();
-                                    window.setTimeout(function(){
-                                        window.location.href = "{{url('/administrator/user')}}";
-                                    }, 2000);
-                                }                    
-                            }
-                        });
-                }
-            }
-            );
+            // swal({
+            //     title: "Are you sure?",
+            //     text: "",
+            //     type: "warning",
+            //     showCancelButton: true,
+            //     confirmButtonColor: "#DD6B55",
+            //     confirmButtonText: "Yes",
+            //     cancelButtonText: "No",
+            //     closeOnConfirm: true,
+            //     closeOnCancel: true 
+            // },
+            // function(isConfirm) {
+            //     if (isConfirm) {
+            //         	$.ajax({
+            //                 type: "POST",
+            //                 url: "{{url('/administrator/user/edit')}}",
+            //                 data: inputData,
+            //                 async: true,
+            //                 success: function(response){
+            //                     if(response){
+            //                         modalSaveSuccess();
+            //                         window.setTimeout(function(){
+            //                             window.location.href = "{{url('/administrator/user')}}";
+            //                         }, 2000);
+            //                     }                    
+            //                 }
+            //             });
+            //     }
+            // }
+            // );
 		});
     });
 </script>
-@endsection --}}
+@endsection

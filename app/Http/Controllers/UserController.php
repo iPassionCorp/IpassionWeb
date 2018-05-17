@@ -31,7 +31,7 @@ class UserController extends Controller
         $data = $req->all();
 
         $validator = Validator::make($data, [
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users'
         ]);
         
         $user = new User();
@@ -62,17 +62,11 @@ class UserController extends Controller
         
         if($data['password']){
             $user->password = Hash::make($data['password']);            
-            if ($user->save()) {
-                return response()->json(['success'=>'Successfully.']);
-            }else{
-                return redirect()->back()->with('data', $data)->with('danger','fail');
-            }
+            $user->save();
+            return response()->json(['success'=>'Successfully.']);
         }else{
-            if ($user->save()) {
-                return response()->json(['success'=>'Successfully.']);
-            }else{
-                return redirect()->back()->with('data', $data)->with('danger','fail');
-            }
+            $user->save();
+            return response()->json(['success'=>'Successfully.']); 
         }
     }        
 

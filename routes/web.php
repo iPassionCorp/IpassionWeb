@@ -32,7 +32,7 @@ Route::get('/administrator/user', 'UserController@user');
 Route::get('/administrator/user/create', 'UserController@create');
 Route::post('/administrator/user/create', 'UserController@store');
 Route::get('/administrator/user/edit/{id}', 'UserController@edit');
-Route::post('/administrator/user/edit', 'UserController@changePassword');
+Route::post('/administrator/user/edit', 'UserController@update');
 Route::delete('/administrator/user/delete/{id}', 'UserController@delete');
 
 //Pages Content
