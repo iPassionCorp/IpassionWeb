@@ -97,41 +97,6 @@
                         );
                 }
         });
-        
-        $('#edit-form').submit(function(e){
-			e.preventDefault();
-                var inputData = $("#edit-form").serialize();
-            // swal({
-            //     title: "Are you sure?",
-            //     text: "",
-            //     type: "warning",
-            //     showCancelButton: true,
-            //     confirmButtonColor: "#DD6B55",
-            //     confirmButtonText: "Yes",
-            //     cancelButtonText: "No",
-            //     closeOnConfirm: true,
-            //     closeOnCancel: true 
-            // },
-            // function(isConfirm) {
-            //     if (isConfirm) {
-            //         	$.ajax({
-            //                 type: "POST",
-            //                 url: "{{url('/administrator/user/edit')}}",
-            //                 data: inputData,
-            //                 async: true,
-            //                 success: function(response){
-            //                     if(response){
-            //                         modalSaveSuccess();
-            //                         window.setTimeout(function(){
-            //                             window.location.href = "{{url('/administrator/user')}}";
-            //                         }, 2000);
-            //                     }                    
-            //                 }
-            //             });
-            //     }
-            // }
-            // );
-		});
     });
 </script>
 @endsection
