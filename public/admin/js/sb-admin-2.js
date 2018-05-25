@@ -29,7 +29,7 @@ function modalDeleteSuccess(){
 
 function displayDatatables(tableID, columnOrder, order){
     var t = $(tableID).DataTable({
-        responsive: true,
+        // scrollX: true,
         columnDefs: [{
             "searchable": false,
             "orderable": false,
@@ -47,7 +47,7 @@ function displayDatatables(tableID, columnOrder, order){
 
 function displayDatatablesDisableOrder(tableID){
     var t = $(tableID).DataTable({
-        responsive: true,
+        // scrollX: true,
         columnDefs: [{
             "searchable": false,
             "orderable": false,
@@ -65,7 +65,7 @@ function displayDatatablesDisableOrder(tableID){
 
 function displayDatatablesDisable(tableID){
     var t = $(tableID).DataTable({
-        responsive: true,
+        // scrollX: true,
         columnDefs: [{
             "searchable": false,
             "orderable": false,
@@ -138,7 +138,7 @@ $(document).ready(function() {
         }
     });
 
-    var url = window.location;
+    var url = window.location;    
     var element = $('ul.nav a').filter(function() {
         return this.href == url;
     }).addClass('active').parent().parent().addClass('in').parent();
