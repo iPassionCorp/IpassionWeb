@@ -71,7 +71,6 @@
     <script>
         $('#edit-form').submit(function(e){
 			e.preventDefault();
-                // var inputData = $("#edit-form").serialize();
                 var inputData = new FormData(this);
 
             swal({
@@ -106,11 +105,6 @@
                 }
             }
             );
-        });
-        
-        $('#image').on('change', function(){
-            var files = $("#image")[0].files.length;
-            console.log(files);
         });
     </script>
 @endsection
