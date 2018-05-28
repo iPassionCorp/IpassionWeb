@@ -65,9 +65,10 @@ class ClientsController extends Controller
         $clients->published = $data['published'];
 
         if($req->hasFile('image')){
+            $destination = base_path() . '/public/storage/clients/';
+            unlink($destination.$clients->image);
             $temp = explode(".", $req->file('image')->getClientOriginalName());
             $filename = round(microtime(true)) . '.' . end($temp);
-            $destination = base_path() . '/public/storage/clients';
             $req->file('image')->move($destination, $filename);
             $clients->image = $filename;
         }
